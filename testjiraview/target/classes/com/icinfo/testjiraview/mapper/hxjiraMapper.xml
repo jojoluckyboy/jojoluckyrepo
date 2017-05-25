@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.icinfo.testjiraview.mapper.hxjiraMapper">
+    <resultMap id="BaseResultMap" type="com.icinfo.testjiraview.pojo.hxjira">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="project" jdbcType="VARCHAR" property="project"/>
+        <result column="key" jdbcType="VARCHAR" property="key"/>
+        <result column="theme" jdbcType="VARCHAR" property="theme"/>
+        <result column="issueType" jdbcType="VARCHAR" property="issuetype"/>
+        <result column="issueStat" jdbcType="VARCHAR" property="issuestat"/>
+        <result column="issuePriority" jdbcType="VARCHAR" property="issuepriority"/>
+        <result column="fixReslt" jdbcType="VARCHAR" property="fixreslt"/>
+        <result column="charger" jdbcType="VARCHAR" property="charger"/>
+        <result column="reporter" jdbcType="VARCHAR" property="reporter"/>
+        <result column="createDate" jdbcType="DATE" property="createdate"/>
+        <result column="lastviewDate" jdbcType="DATE" property="lastviewdate"/>
+        <result column="updateDate" jdbcType="DATE" property="updatedate"/>
+        <result column="fixDate" jdbcType="DATE" property="fixdate"/>
+        <result column="effectversion" jdbcType="VARCHAR" property="effectversion"/>
+        <result column="fixedversion" jdbcType="VARCHAR" property="fixedversion"/>
+        <result column="module" jdbcType="VARCHAR" property="module"/>
+        <result column="deadline" jdbcType="DATE" property="deadline"/>
+        <result column="vote" jdbcType="VARCHAR" property="vote"/>
+        <result column="attention" jdbcType="VARCHAR" property="attention"/>
+        <result column="image" jdbcType="VARCHAR" property="image"/>
+        <result column="evaluateTime" jdbcType="VARCHAR" property="evaluatetime"/>
+        <result column="remainTime" jdbcType="VARCHAR" property="remaintime"/>
+        <result column="consumeTime" jdbcType="VARCHAR" property="consumetime"/>
+        <result column="workRatio" jdbcType="VARCHAR" property="workratio"/>
+        <result column="linkProblem" jdbcType="VARCHAR" property="linkproblem"/>
+        <result column="testEnvironment" jdbcType="VARCHAR" property="testenvironment"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="securityLevel" jdbcType="VARCHAR" property="securitylevel"/>
+        <result column="progress" jdbcType="VARCHAR" property="progress"/>
+        <result column="label" jdbcType="VARCHAR" property="label"/>
+        <result column="seriousBug" jdbcType="VARCHAR" property="seriousbug"/>
+        <result column="resonAnalysis" jdbcType="VARCHAR" property="resonanalysis"/>
+        <result column="clientIssue" jdbcType="VARCHAR" property="clientissue"/>
+        <result column="ownerOpt" jdbcType="VARCHAR" property="owneropt"/>
+        <result column="mappingProblem" jdbcType="VARCHAR" property="mappingproblem"/>
+        <result column="clientOpt" jdbcType="VARCHAR" property="clientopt"/>
+        <result column="defectType" jdbcType="VARCHAR" property="defecttype"/>
+        <result column="defectValuatype" jdbcType="VARCHAR" property="defectvaluatype"/>
+        <result column="defectValuatype1" jdbcType="VARCHAR" property="defectvaluatype1"/>
+        <result column="duplicateRecord" jdbcType="VARCHAR" property="duplicaterecord"/>
+        <result column="firstFixtime" jdbcType="DATE" property="firstfixtime"/>
+    </resultMap>
+
+    <resultMap id="jiraProResultMap" type="com.icinfo.testjiraview.pojo.jiraPro">
+        <result column="project" jdbcType="VARCHAR" property="project"/>
+        <result column="QT" jdbcType="INTEGER" property="qt"/>
+        <result column="DJ" jdbcType="INTEGER" property="dj"/>
+        <result column="GJ" jdbcType="INTEGER" property="gj"/>
+        <result column="XQBF" jdbcType="INTEGER" property="xqbf"/>
+        <result column="HZ" jdbcType="INTEGER" property="hz"/>
+    </resultMap>
+
+    <resultMap id="jiraDtypeResultMap" type="com.icinfo.testjiraview.pojo.jiraDtype">
+        <result column="project" jdbcType="VARCHAR" property="project"/>
+        <result column="XJ" jdbcType="INTEGER" property="xj"/>
+        <result column="GB" jdbcType="INTEGER" property="gb"/>
+        <result column="DQR" jdbcType="INTEGER" property="dqr"/>
+        <result column="YC" jdbcType="INTEGER" property="yc"/>
+        <result column="DK" jdbcType="INTEGER" property="dk"/>
+        <result column="JJ" jdbcType="INTEGER" property="jj"/>
+        <result column="ZH" jdbcType="INTEGER" property="zh"/>
+        <result column="CF" jdbcType="INTEGER" property="cf"/>
+        <result column="MONTHS" jdbcType="VARCHAR" property="months"/>
+        <result column="dname" jdbcType="VARCHAR" property="dname"/>
+        <result column="pnum" jdbcType="INTEGER" property="pnum"/>
+        <result column="QT" jdbcType="INTEGER" property="qt"/>
+        <result column="DJ" jdbcType="INTEGER" property="dj"/>
+        <result column="GJ" jdbcType="INTEGER" property="gj"/>
+    </resultMap>
+
+    <resultMap id="jiraDevnameResultMap" type="com.icinfo.testjiraview.pojo.jiraUser">
+        <result column="role" jdbcType="VARCHAR" property="role"/>
+        <result column="devName" jdbcType="VARCHAR" property="devName"/>
+        <result column="disName" jdbcType="VARCHAR" property="disName"/>
+
+    </resultMap>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from hxjira
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.icinfo.testjiraview.pojo.hxjira">
+    insert into hxjira (id, project, key, 
+      theme, issueType, issueStat, 
+      issuePriority, fixReslt, charger, 
+      reporter, createDate, lastviewDate, 
+      updateDate, fixDate, effectversion, 
+      fixedversion, module, deadline, 
+      vote, attention, image, 
+      evaluateTime, remainTime, consumeTime, 
+      workRatio, linkProblem, testEnvironment, 
+      description, securityLevel, progress, 
+      label, seriousBug, resonAnalysis, 
+      clientIssue, ownerOpt, mappingProblem, 
+      clientOpt, defectType, defectValuatype, 
+      defectValuatype1, duplicateRecord, firstFixtime
+      )
+    values (#{id,jdbcType=INTEGER}, #{project,jdbcType=VARCHAR}, #{key,jdbcType=VARCHAR}, 
+      #{theme,jdbcType=VARCHAR}, #{issuetype,jdbcType=VARCHAR}, #{issuestat,jdbcType=VARCHAR}, 
+      #{issuepriority,jdbcType=VARCHAR}, #{fixreslt,jdbcType=VARCHAR}, #{charger,jdbcType=VARCHAR}, 
+      #{reporter,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, #{lastviewdate,jdbcType=TIMESTAMP}, 
+      #{updatedate,jdbcType=TIMESTAMP}, #{fixdate,jdbcType=TIMESTAMP}, #{effectversion,jdbcType=VARCHAR}, 
+      #{fixedversion,jdbcType=VARCHAR}, #{module,jdbcType=VARCHAR}, #{deadline,jdbcType=TIMESTAMP}, 
+      #{vote,jdbcType=VARCHAR}, #{attention,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
+      #{evaluatetime,jdbcType=VARCHAR}, #{remaintime,jdbcType=VARCHAR}, #{consumetime,jdbcType=VARCHAR}, 
+      #{workratio,jdbcType=VARCHAR}, #{linkproblem,jdbcType=VARCHAR}, #{testenvironment,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{securitylevel,jdbcType=VARCHAR}, #{progress,jdbcType=VARCHAR}, 
+      #{label,jdbcType=VARCHAR}, #{seriousbug,jdbcType=VARCHAR}, #{resonanalysis,jdbcType=VARCHAR}, 
+      #{clientissue,jdbcType=VARCHAR}, #{owneropt,jdbcType=VARCHAR}, #{mappingproblem,jdbcType=VARCHAR}, 
+      #{clientopt,jdbcType=VARCHAR}, #{defecttype,jdbcType=VARCHAR}, #{defectvaluatype,jdbcType=VARCHAR}, 
+      #{defectvaluatype1,jdbcType=VARCHAR}, #{duplicaterecord,jdbcType=VARCHAR}, #{firstfixtime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+    <update id="updateByPrimaryKey" parameterType="com.icinfo.testjiraview.pojo.hxjira">
+    update hxjira
+    set project = #{project,jdbcType=VARCHAR},
+      key = #{key,jdbcType=VARCHAR},
+      theme = #{theme,jdbcType=VARCHAR},
+      issueType = #{issuetype,jdbcType=VARCHAR},
+      issueStat = #{issuestat,jdbcType=VARCHAR},
+      issuePriority = #{issuepriority,jdbcType=VARCHAR},
+      fixReslt = #{fixreslt,jdbcType=VARCHAR},
+      charger = #{charger,jdbcType=VARCHAR},
+      reporter = #{reporter,jdbcType=VARCHAR},
+      createDate = #{createdate,jdbcType=TIMESTAMP},
+      lastviewDate = #{lastviewdate,jdbcType=TIMESTAMP},
+      updateDate = #{updatedate,jdbcType=TIMESTAMP},
+      fixDate = #{fixdate,jdbcType=TIMESTAMP},
+      effectversion = #{effectversion,jdbcType=VARCHAR},
+      fixedversion = #{fixedversion,jdbcType=VARCHAR},
+      module = #{module,jdbcType=VARCHAR},
+      deadline = #{deadline,jdbcType=TIMESTAMP},
+      vote = #{vote,jdbcType=VARCHAR},
+      attention = #{attention,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      evaluateTime = #{evaluatetime,jdbcType=VARCHAR},
+      remainTime = #{remaintime,jdbcType=VARCHAR},
+      consumeTime = #{consumetime,jdbcType=VARCHAR},
+      workRatio = #{workratio,jdbcType=VARCHAR},
+      linkProblem = #{linkproblem,jdbcType=VARCHAR},
+      testEnvironment = #{testenvironment,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      securityLevel = #{securitylevel,jdbcType=VARCHAR},
+      progress = #{progress,jdbcType=VARCHAR},
+      label = #{label,jdbcType=VARCHAR},
+      seriousBug = #{seriousbug,jdbcType=VARCHAR},
+      resonAnalysis = #{resonanalysis,jdbcType=VARCHAR},
+      clientIssue = #{clientissue,jdbcType=VARCHAR},
+      ownerOpt = #{owneropt,jdbcType=VARCHAR},
+      mappingProblem = #{mappingproblem,jdbcType=VARCHAR},
+      clientOpt = #{clientopt,jdbcType=VARCHAR},
+      defectType = #{defecttype,jdbcType=VARCHAR},
+      defectValuatype = #{defectvaluatype,jdbcType=VARCHAR},
+      defectValuatype1 = #{defectvaluatype1,jdbcType=VARCHAR},
+      duplicateRecord = #{duplicaterecord,jdbcType=VARCHAR},
+      firstFixtime = #{firstfixtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, project, key, theme, issueType, issueStat, issuePriority, fixReslt, charger, 
+    reporter, createDate, lastviewDate, updateDate, fixDate, effectversion, fixedversion, 
+    module, deadline, vote, attention, image, evaluateTime, remainTime, consumeTime, 
+    workRatio, linkProblem, testEnvironment, description, securityLevel, progress, label, 
+    seriousBug, resonAnalysis, clientIssue, ownerOpt, mappingProblem, clientOpt, defectType, 
+    defectValuatype, defectValuatype1, duplicateRecord, firstFixtime
+    from hxjira
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+    select id, project, key, theme, issueType, issueStat, issuePriority, fixReslt, charger, 
+    reporter, createDate, lastviewDate, updateDate, fixDate, effectversion, fixedversion, 
+    module, deadline, vote, attention, image, evaluateTime, remainTime, consumeTime, 
+    workRatio, linkProblem, testEnvironment, description, securityLevel, progress, label, 
+    seriousBug, resonAnalysis, clientIssue, ownerOpt, mappingProblem, clientOpt, defectType, 
+    defectValuatype, defectValuatype1, duplicateRecord, firstFixtime
+    from hxjira
+  </select>
+
+    <!-- 查询jira列表group by 项目组，返回缺陷数目最多的前15，非jira生产库，非实时，测试调试用 -->
+    <select id="getTotalbypro" resultMap="jiraProResultMap">
+   SELECT A.project ,B.XJ ,C.GB ,D.DQR,E.YC,F.DK,G.JJ,A.ZH FROM
+  (SELECT DISTINCT project,count(*) ZH FROM hxjira  WHERE  createDate &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND createDate &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') GROUP BY project ORDER BY COUNT(*) ASC LIMIT 0,10) A
+  LEFT JOIN
+  (SELECT project,COUNT(*) XJ FROM hxjira  WHERE  createDate &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND createDate &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d')
+  AND issueStat = '新建(New)' GROUP BY project)
+  B ON A.project = B.project
+    LEFT JOIN
+  (SELECT project,COUNT(*) DK FROM hxjira  WHERE  createDate &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND createDate &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d')
+  AND issueStat = '打开' GROUP BY project)
+  F ON A.project = F.project
+  LEFT JOIN
+  (SELECT project,COUNT(*) JJ FROM hxjira  WHERE  createDate &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND createDate &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d')
+  AND issueStat = '拒绝(Rejected)' GROUP BY project)
+  G ON A.project = G.project
+  LEFT JOIN
+   (SELECT project,COUNT(*) YC FROM hxjira  WHERE  createDate &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND createDate &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d')
+  AND issueStat = '延迟修复(Postponed)' GROUP BY project)
+  E ON A.project = E.project
+    LEFT JOIN
+   (SELECT project,COUNT(*) DQR FROM hxjira  WHERE  createDate &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND createDate &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d')
+  AND issueStat = '已解决待确认' GROUP BY project)
+  D ON A.project = D.project
+    LEFT JOIN
+  (SELECT project,COUNT(*) GB FROM hxjira  WHERE  createDate &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND createDate &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d')
+   AND issueStat = '关闭' GROUP BY project)
+  C ON A.project = C.project
+ </select>
+
+    <!-- 查询jira列表group by 项目组，返回缺陷数目最多的前10，jira生产库 -->
+    <select id="getRtotalbypro" resultMap="jiraProResultMap">
+    SELECT A.project ,B.XJ ,C.DK ,D.JJ,E.YC,F.DQR,G.GB,A.ZH FROM
+  (SELECT DISTINCT ji.project pid,p.pname project,COUNT(*) ZH FROM jiraissue ji, project p WHERE ji.issuetype ='1' AND ji.project=p.ID AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') GROUP BY ji.project ORDER BY COUNT(*) DESC LIMIT 0,10) A
+  LEFT JOIN
+  (SELECT project,COUNT(*) XJ FROM jiraissue ji WHERE  ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.issuestatus = '10000' GROUP BY project)
+  B ON A.pid = B.project
+   LEFT JOIN
+  (SELECT project,COUNT(*) DK FROM jiraissue ji WHERE  ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.issuestatus = '1' GROUP BY project)
+  C ON A.pid = C.project
+    LEFT JOIN
+  (SELECT project,COUNT(*) JJ FROM jiraissue ji WHERE  ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.issuestatus = '10002' GROUP BY project)
+  D ON A.pid = D.project
+    LEFT JOIN
+  (SELECT project,COUNT(*) YC FROM jiraissue ji WHERE  ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.issuestatus = '10001' GROUP BY project)
+  E ON A.pid = E.project
+    LEFT JOIN
+  (SELECT project,COUNT(*) DQR FROM jiraissue ji WHERE  ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.issuestatus = '5' GROUP BY project)
+  F ON A.pid = F.project
+    LEFT JOIN
+  (SELECT project,COUNT(*) GB FROM jiraissue ji WHERE  ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.issuestatus = '6' GROUP BY project)
+  G ON A.pid = G.project
+
+  </select>
+
+    <!-- 查询jira列表group by 项目组，返回缺陷类型其他、低级、关键指标，jira生产库 -->
+    <select id="getRDtypebypro" resultMap="jiraDtypeResultMap">
+
+    SELECT A.pname,A.ZH,B.QT,C.DJ,D.GJ ,E.XQBF,F.CF FROM
+       (SELECT p.pname,ji.project,COUNT(*) ZH FROM  jiraissue ji,project p WHERE ji.project = p.ID AND ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d')  AND p.pname= #{project} GROUP BY ji.project) A
+       LEFT JOIN
+       (SELECT project,COUNT(*) QT FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d')
+       AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.ID = cv.issue AND cv.stringvalue = '10263' GROUP BY ji.project)B
+        ON A.project=B.project
+       LEFT JOIN
+       (SELECT project, COUNT(*) DJ  FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d')
+       AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.ID = cv.issue AND cv.stringvalue = '10245' GROUP BY ji.project) C
+       ON A.project=C.project
+        LEFT JOIN
+       (SELECT project, COUNT(*) GJ  FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d')
+       AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.ID = cv.issue AND cv.stringvalue = '10320' GROUP BY ji.project) D
+       ON A.project=D.project
+        LEFT JOIN
+       (SELECT project, COUNT(*) XQBF FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d')
+       AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.ID = cv.issue AND cv.stringvalue = '10246' GROUP BY ji.project) E
+       ON A.project=E.project
+       LEFT JOIN
+       (SELECT project,COUNT(*) CF  FROM  jiraissue ji WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d')
+       AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.RESOLUTION='3' GROUP BY ji.project) F
+       ON A.project=F.project
+
+  </select>
+
+    <!-- 查询jira列表group by 项目组top3的开发缺陷情况，返回缺陷类型其他、低级、关键指标，jira生产库 -->
+    <select id="getRDtypebytopdev" resultMap="jiraDtypeResultMap">
+
+SELECT A.dname,A.ZH,B.QT,C.DJ,D.GJ,E.XQBF,F.CF FROM
+       (SELECT ji.assignee sname ,cu.display_name dname,COUNT(*) ZH FROM jiraissue ji,project p,cwd_user cu WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d')
+       AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.project = p.ID AND p.pname = #{project} AND  ji.assignee = cu.user_name GROUP BY ji.assignee ORDER BY COUNT(*) DESC LIMIT 0,3) A
+       LEFT JOIN
+       (SELECT ji.assignee,COUNT(*) QT FROM  jiraissue ji,customfieldvalue cv,project p WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d')
+       AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.project = p.ID AND p.pname = #{project} AND ji.ID = cv.issue AND cv.stringvalue = '10263' GROUP BY ji.assignee)B
+       ON A.sname=B.assignee
+        LEFT JOIN
+       (SELECT ji.assignee,COUNT(*) DJ FROM  jiraissue ji,customfieldvalue cv,project p WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d')
+       AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.project = p.ID AND p.pname = #{project} AND ji.ID = cv.issue AND cv.stringvalue = '10245' GROUP BY ji.assignee)C
+       ON A.sname=C.assignee
+        LEFT JOIN
+       (SELECT ji.assignee,COUNT(*) GJ FROM  jiraissue ji,customfieldvalue cv,project p WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d')
+       AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.project = p.ID AND p.pname = #{project} AND ji.ID = cv.issue AND cv.stringvalue = '10320' GROUP BY ji.assignee)D
+       ON A.sname=D.assignee
+        LEFT JOIN
+       (SELECT ji.assignee,COUNT(*) XQBF FROM  jiraissue ji,customfieldvalue cv,project p WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d')
+       AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.project = p.ID AND p.pname = #{project} AND ji.ID = cv.issue AND cv.stringvalue = '10246' GROUP BY ji.assignee)E
+       ON A.sname=E.assignee
+          LEFT JOIN
+       (SELECT ji.assignee,COUNT(*) CF FROM  jiraissue ji,project p WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d')
+       AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.project = p.ID AND p.pname = #{project} AND ji.RESOLUTION='3' GROUP BY ji.assignee)F
+       ON A.sname=F.assignee
+
+    </select>
+
+    <!-- 查询jira列表group by 开发人员，按月返回缺陷数量、低级、关键指标，jira生产库 -->
+    <select id="getRDtypebydev" resultMap="jiraDtypeResultMap">
+      SELECT A.months,A.ZH,B.DJ,C.GJ,D.XQBF,E.CF FROM
+       (SELECT DATE_FORMAT(created,'%Y%m') months,COUNT(*) ZH  FROM  jiraissue ji WHERE ji.assignee = #{devName} AND ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') GROUP BY months) A
+       LEFT JOIN
+     (SELECT DATE_FORMAT(ji.created,'%Y%m') months,COUNT(*) DJ FROM  jiraissue ji,customfieldvalue cv WHERE ji.assignee = #{devName} AND ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.ID = cv.issue AND cv.stringvalue = '10245' GROUP BY months)B
+      ON A.months=B.months
+       LEFT JOIN
+     (SELECT DATE_FORMAT(ji.created,'%Y%m') months,COUNT(*) GJ FROM  jiraissue ji,customfieldvalue cv WHERE ji.assignee = #{devName} AND ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.ID = cv.issue AND cv.stringvalue = '10320' GROUP BY months)C
+      ON A.months=C.months
+       LEFT JOIN
+     (SELECT DATE_FORMAT(ji.created,'%Y%m') months,COUNT(*) XQBF FROM  jiraissue ji,customfieldvalue cv WHERE ji.assignee = #{devName} AND ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.ID = cv.issue AND cv.stringvalue = '10246' GROUP BY months)D
+      ON A.months=D.months
+       LEFT JOIN
+       (SELECT DATE_FORMAT(created,'%Y%m') months,COUNT(*) CF  FROM  jiraissue ji WHERE ji.assignee = #{devName} AND ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.RESOLUTION='3' GROUP BY months) E
+       ON A.months=E.months
+
+
+    </select>
+
+    <!-- 查询jira的开发人员，按匹配返回，jira生产库 -->
+    <select id="getRdevNamelist" resultMap="jiraDevnameResultMap">
+
+    SELECT cm.parent_name role,cu.user_name devName,cu.display_name disName FROM cwd_user cu,cwd_membership cm WHERE cu.user_name=cm.child_name AND cm.parent_name='汇信开发人员' AND cu.user_name LIKE CONCAT(#{typename},'%') ORDER BY cu.user_name
+
+    </select>
+
+
+    <!-- 按开发团队查询各项目的缺陷情况，按匹配返回，jira生产库 -->
+    <select id="getRDprobydevgroup" resultMap="jiraDtypeResultMap">
+
+    SELECT B.project,A.dname,B1.pnum,C.ZH,D.QT,E.DJ,F.GJ,G.XQBF,H.CF FROM
+          (SELECT ji.assignee sname ,cu.display_name dname FROM jiraissue ji,cwd_user cu WHERE ji.issuetype = '1'
+          AND ji.created &gt; STR_TO_DATE(#{dstartTimeV}, '%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV}, '%Y-%m-%d')
+          AND ji.assignee IN (SELECT child_name FROM cwd_membership WHERE parent_name = #{devGroup})
+          AND ji.assignee = cu.user_name GROUP BY ji.assignee ORDER BY cu.display_name) A
+          LEFT JOIN
+          (SELECT  pj.ID PID,pj.pname project,COUNT(*) ZH FROM jiraissue ji,project pj
+        WHERE ji.issuetype = '1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV}, '%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV}, '%Y-%m-%d')
+          AND ji.project IN (SELECT PID FROM projectroleactor WHERE ROLETYPEPARAMETER = #{devGroup}) AND ji.project = pj.ID
+        GROUP BY ji.project ORDER BY ZH DESC LIMIT 0,3 ) B ON 1=1
+        LEFT JOIN
+         (SELECT COUNT(*) pnum FROM (SELECT  pj.ID PID,pj.pname project,COUNT(*) ZH FROM jiraissue ji,project pj
+        WHERE ji.issuetype = '1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV}, '%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV}, '%Y-%m-%d')
+          AND ji.project IN (SELECT PID FROM projectroleactor WHERE ROLETYPEPARAMETER = #{devGroup}) AND ji.project = pj.ID
+        GROUP BY ji.project ORDER BY ZH DESC LIMIT 0,4) B)B1 ON 1=1
+        LEFT JOIN
+        (SELECT ji.assignee,ji.project,COUNT(*) ZH FROM  jiraissue ji WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d')
+               AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') GROUP BY ji.assignee,ji.project)C
+               ON B.PID=C.project AND A.sname=C.assignee
+         LEFT JOIN
+         (SELECT ji.assignee,ji.project,COUNT(*) QT FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d')
+               AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d')  AND ji.ID = cv.issue AND cv.stringvalue = '10263' GROUP BY ji.project,ji.assignee)D
+               ON B.PID=D.project AND A.sname=D.assignee
+          LEFT JOIN
+         (SELECT ji.assignee,ji.project,COUNT(*) DJ FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d')
+               AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d')  AND ji.ID = cv.issue AND cv.stringvalue = '10245' GROUP BY ji.project,ji.assignee)E
+               ON B.PID=E.project AND A.sname=E.assignee
+            LEFT JOIN
+         (SELECT ji.assignee,ji.project,COUNT(*) GJ FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d')
+               AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d')  AND ji.ID = cv.issue AND cv.stringvalue = '10320' GROUP BY ji.project,ji.assignee)F
+               ON B.PID=F.project AND A.sname=F.assignee
+             LEFT JOIN
+         (SELECT ji.assignee,ji.project,COUNT(*) XQBF FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d')
+               AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d')  AND ji.ID = cv.issue AND cv.stringvalue = '10246' GROUP BY ji.project,ji.assignee)G
+               ON B.PID=G.project AND A.sname=G.assignee
+             LEFT JOIN
+         (SELECT ji.assignee,ji.project,COUNT(*) CF FROM  jiraissue ji WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d')
+               AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d')  AND ji.RESOLUTION='3' GROUP BY ji.project,ji.assignee)H
+               ON B.PID=H.project AND A.sname=H.assignee
+    </select>
+
+    <!-- 按开发某一段时间的缺陷状态，按匹配返回，jira生产库 -->
+    <select id="getRDevbyperiod" resultMap="jiraDtypeResultMap">
+      SELECT A.dname,A.ZH,B.XJ,C.GB,D.DQR,E.QT,F.DJ,G.GJ,H.XQBF,I.CF FROM
+       (SELECT cu.display_name dname,ji.assignee,COUNT(*) ZH FROM  jiraissue ji, cwd_user cu WHERE ji.assignee = cu.user_name AND cu.display_name= #{dname} AND ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') GROUP BY ji.assignee) A
+       LEFT JOIN
+     (SELECT ji.assignee,COUNT(*) XJ FROM jiraissue ji WHERE  ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.issuestatus = '10000' GROUP BY ji.assignee) B
+      ON A.assignee = B.assignee
+       LEFT JOIN
+      (SELECT ji.assignee,COUNT(*) GB FROM jiraissue ji WHERE  ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.issuestatus = '6' GROUP BY ji.assignee) C
+      ON A.assignee = C.assignee
+       LEFT JOIN
+      (SELECT ji.assignee,COUNT(*) DQR FROM jiraissue ji WHERE  ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.issuestatus = '5' GROUP BY ji.assignee) D
+      ON A.assignee = D.assignee
+      LEFT JOIN
+      (SELECT ji.assignee,COUNT(*) QT FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.ID = cv.issue AND cv.stringvalue = '10263' GROUP BY ji.assignee)E
+       ON A.assignee = E.assignee
+        LEFT JOIN
+      (SELECT ji.assignee,COUNT(*) DJ FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.ID = cv.issue AND cv.stringvalue = '10245' GROUP BY ji.assignee)F
+       ON A.assignee = F.assignee
+       LEFT JOIN
+      (SELECT ji.assignee,COUNT(*) GJ FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.ID = cv.issue AND cv.stringvalue = '10320' GROUP BY ji.assignee)G
+       ON A.assignee = G.assignee
+       LEFT JOIN
+      (SELECT ji.assignee,COUNT(*) XQBF FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.ID = cv.issue AND cv.stringvalue = '10246' GROUP BY ji.assignee)H
+       ON A.assignee = H.assignee
+       LEFT JOIN
+      (SELECT ji.assignee,COUNT(*) CF FROM jiraissue ji WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.RESOLUTION='3' GROUP BY ji.assignee)I
+       ON A.assignee = I.assignee
+    </select>
+
+
+</mapper>
